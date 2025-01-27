@@ -9,7 +9,7 @@ const emit = defineEmits(["updatePost"]);
 const postInputElement = useTemplateRef("post-input");
 const previousPostState = ref();
 
-function handleReturn(e: KeyboardEvent) {
+function cancelLastAction(e: KeyboardEvent) {
   if (e.key === "z" && previousPostState.value) {
     emit("updatePost", previousPostState.value);
   }
@@ -22,7 +22,7 @@ function applyTemplateToSelection(propertyName: PropertyName) {
   const before = value.substring(0, selectionStart);
   const after = value.substring(selectionEnd);
 
-  previousPostState.value = post;
+  previousPostState.value = post.value;
 
   if (selectionStart !== selectionEnd) {
     const selection = value.substring(selectionStart, selectionEnd);
@@ -46,11 +46,11 @@ function applyTemplateToSelection(propertyName: PropertyName) {
       <div class="templater-input">
         <div class="templater-buttons">
           <button
-            v-for="style in currentCharacter.formatButtons"
-            :key="style"
-            @click="applyTemplateToSelection(style as PropertyName)"
+            v-for="formatStyle in currentCharacter.formatButtons"
+            :key="formatStyle"
+            @click="applyTemplateToSelection(formatStyle as PropertyName)"
           >
-            {{ style }}
+            {{ formatStyle }}
           </button>
         </div>
         <textarea
@@ -59,7 +59,7 @@ function applyTemplateToSelection(propertyName: PropertyName) {
           v-model="post"
           placeholder="Lorem ispum..."
           ref="post-input"
-          @keyup.ctrl="handleReturn"
+          @keyup.ctrl="cancelLastAction"
         ></textarea>
       </div>
     </div>
