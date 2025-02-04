@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropertyName } from "@/assets/characterData.ts";
+import type { PropertyName } from "@/assets/characterData";
 import { ref, useTemplateRef } from "vue";
 
 const props = defineProps(["currentCharacter", "replaceByFormatted"]);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { characterData, PropertyName } from "@/assets/characterData.ts";
+import { characterData, PropertyName } from "@/assets/characterData";
 import Ouput from "@/components/Ouput.vue";
 import FormatterInput from "@/components/FormatterInput.vue";
 import CharacterSelection from "@/components/CharacterSelection.vue";
