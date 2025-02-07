@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropertyName } from "@/assets/characterData";
+import { PropertyName } from "@/assets/characterData";
 import { ref, useTemplateRef } from "vue";
 
 const props = defineProps(["currentCharacter", "replaceByFormatted"]);
@@ -32,27 +32,46 @@ function applyTemplateToSelection(propertyName: PropertyName) {
     emit("updatePost", `${before}${props.replaceByFormatted("", propertyName)}${after}`);
   }
 }
+
+function getBtnIcon(propertyName: PropertyName) {
+  switch (propertyName) {
+    case PropertyName.DIALOG:
+      return "/src/assets/images/dialog.svg";
+    case PropertyName.ASTERISK:
+      return "/src/assets/images/asterisk.svg";
+    case PropertyName.INTERLUDE:
+      return "/src/assets/images/pen.svg";
+    default:
+      return "";
+  }
+}
 </script>
 
 <template>
-  <div class="input">
-    <div class="quote-field">
-      <label for="quote">Citation</label>
-      <textarea name="quote" id="quote" v-model="quote"></textarea>
+  <div class="island">
+    <div class="fieldgroup">
+      <label for="quote" class="title">Citation</label>
+      <div class="input textarea-wrapper input--quote">
+        <button class="btn--icon">
+          <img src="/src/assets/images/copy.svg" alt="Copier" />
+        </button>
+        <textarea name="quote" id="quote" v-model="quote"></textarea>
+      </div>
     </div>
 
-    <div class="templater">
-      <label for="post">Post RP</label>
-      <div class="templater-input">
+    <div class="fieldgroup">
+      <label for="post" class="title">Post RP</label>
+      <div class="input">
         <div class="templater-buttons">
           <button
             v-for="formatStyle in currentCharacter.formatButtons"
             :key="formatStyle"
             @click="applyTemplateToSelection(formatStyle as PropertyName)"
           >
-            {{ formatStyle }}
+            <img :src="getBtnIcon(formatStyle as PropertyName)" />
           </button>
         </div>
+
         <textarea
           name="post"
           id="post"
@@ -65,3 +84,15 @@ function applyTemplateToSelection(propertyName: PropertyName) {
     </div>
   </div>
 </template>
+
+<style scoped>
+.island {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input--quote {
+  min-height: 0;
+}
+</style>

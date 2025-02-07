@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+html {
+  --light: #fff;
+  --accent: #4d3df7;
+  --contrast: #1f2933;
+  --grey-100: #f0f4f8;
+  --grey-200: #e2e8f0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--grey-100);
+  font-family: "Montserrat", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+button,
+input,
+textarea {
+  border: none;
+  font-family: inherit;
+  color: var(--contrast);
+}
+
+button {
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--accent);
+}
+
+.fieldgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  border: solid var(--grey-200) 1px;
+  border-radius: 25px;
+  font-family: inherit;
+  color: #486581;
+  padding: 16px;
+  font-family: inherit;
+}
+
+.btn--icon {
+  $size: 25px;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: $size;
+  aspect-ratio: 1/1;
+
+  img {
+    height: 100%;
+    width: 100%;
+    margin: 6px;
+  }
+}
+
+.btn--text {
+  background: var(--accent);
+  color: var(--light);
+  border-radius: 25px;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 25px;
+  min-height: 300px;
+
+  textarea {
+    height: 100%;
+    width: 100%;
+    resize: vertical;
+  }
+
+  button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: solid var(--grey-200) 1px;
+  }
+}
+
+#app {
+  display: flex;
+  align-items: start;
+  padding: 20px;
+  gap: 70px;
+}
+
+main {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.island {
+  background: var(--light);
+  border: solid 1 var(--grey-200);
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.character-selection {
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--light);
+  padding: 16px;
+  border-radius: 90px;
+  border: solid var(--grey-200) 1px;
+
+  .character-btn {
+    height: 100px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: solid 4px var(--grey-200);
+
+    .character-name {
+      text-align: center;
+      background: var(--light);
+      padding: 0 4px;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    &:hover .character-name {
+      opacity: 1;
+    }
+  }
+}
+
+.quote-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.templater-buttons {
+  background: #f0f4f8;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    border: none;
+  }
+}

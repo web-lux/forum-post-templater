@@ -24,13 +24,6 @@ function handleCharacterChange(index: number) {
 </script>
 
 <template>
-  <header>
-    <h1>{{ currentCharacter.name }}</h1>
-    <hr />
-    <p>Post : {{ post }}</p>
-    <p>Quote : {{ quote }}</p>
-  </header>
-
   <CharacterSelection @change-current-character="handleCharacterChange"></CharacterSelection>
 
   <main>
@@ -45,5 +38,3 @@ function handleCharacterChange(index: number) {
     <Ouput :current-character :post :quote :replaceByFormatted></Ouput>
   </main>
 </template>
-
-<style scoped></style>

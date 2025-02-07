@@ -15,9 +15,23 @@ function generateOutput() {
 </script>
 
 <template>
-  <div class="output">
-    <button @click="generateOutput">Générer le RP</button>
-    <label for="result">Output</label>
-    <textarea readonly name="result" id="result" class="result" v-model="output"></textarea>
+  <div class="island output">
+    <button @click="generateOutput" class="btn--text">Générer le RP</button>
+    <label for="result" class="title">Output</label>
+    <div class="input textarea-wrapper">
+      <button class="btn--icon">
+        <img src="/src/assets/images/copy.svg" alt="Copier" />
+      </button>
+      <textarea readonly name="result" id="result" v-model="output"></textarea>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+</style>
