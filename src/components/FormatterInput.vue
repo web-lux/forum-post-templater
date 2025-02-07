@@ -61,7 +61,7 @@ function getBtnIcon(propertyName: PropertyName) {
 
     <div class="fieldgroup">
       <label for="post" class="title">Post RP</label>
-      <div class="input">
+      <div class="input templater">
         <div class="templater-buttons">
           <button
             v-for="formatStyle in currentCharacter.formatButtons"
@@ -69,6 +69,7 @@ function getBtnIcon(propertyName: PropertyName) {
             @click="applyTemplateToSelection(formatStyle as PropertyName)"
           >
             <img :src="getBtnIcon(formatStyle as PropertyName)" />
+            <div class="tooltip">{{ formatStyle }}</div>
           </button>
         </div>
 
@@ -90,9 +91,5 @@ function getBtnIcon(propertyName: PropertyName) {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.input--quote {
-  min-height: 0;
 }
 </style>

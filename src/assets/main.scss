@@ -150,9 +150,14 @@ main {
   }
 }
 
-.quote-field {
-  display: flex;
-  flex-direction: column;
+.templater {
+  width: 100%;
+
+  textarea {
+    resize: vertical;
+    width: 100%;
+    min-height: 300px;
+  }
 }
 
 .templater-buttons {
@@ -160,6 +165,9 @@ main {
   display: flex;
   gap: 8px;
   padding: 8px;
+  width: min-content;
+  border-radius: 25px;
+  margin-bottom: 10px;
 
   button {
     display: flex;
@@ -169,5 +177,36 @@ main {
     border-radius: 50%;
     padding: 4px;
     border: none;
+    position: relative;
+
+    &:hover .tooltip {
+      opacity: 1;
+    }
+  }
+}
+
+.tooltip {
+  background: var(--accent);
+  color: var(--light);
+  position: absolute;
+  top: -200%;
+  padding: 5px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: 0.3s;
+
+  &::before {
+    $size: 8px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: $size solid transparent;
+    border-top-color: var(--accent);
+    border-bottom: 0;
+    margin-left: -$size;
+    margin-bottom: -$size;
   }
 }
