@@ -24,7 +24,10 @@ function handleCharacterChange(index: number) {
 </script>
 
 <template>
-  <CharacterSelection @change-current-character="handleCharacterChange"></CharacterSelection>
+  <CharacterSelection
+    @change-current-character="handleCharacterChange"
+    :current-character
+  ></CharacterSelection>
 
   <main>
     <FormatterInput

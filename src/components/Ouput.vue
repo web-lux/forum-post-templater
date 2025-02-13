@@ -12,6 +12,10 @@ function generateOutput() {
   const html = props.replaceByFormatted(`${formattedQuote}\n${props.post}`, PropertyName.WRAPPER);
   output.value = `${html}${props.currentCharacter[PropertyName.STYLE]}`;
 }
+
+function copyToClipboard() {
+  navigator.clipboard.writeText(output.value);
+}
 </script>
 
 <template>
@@ -19,8 +23,8 @@ function generateOutput() {
     <button @click="generateOutput" class="btn--text">Générer le RP</button>
     <label for="result" class="title">Output</label>
     <div class="input textarea-wrapper">
-      <button class="btn--icon">
-        <img src="/src/assets/images/copy.svg" alt="Copier" />
+      <button class="btn--icon" :disabled="!output" @click="copyToClipboard">
+        <img src="/copy.svg" alt="Copier" />
       </button>
       <textarea readonly name="result" id="result" v-model="output"></textarea>
     </div>

@@ -36,11 +36,13 @@ function applyTemplateToSelection(propertyName: PropertyName) {
 function getBtnIcon(propertyName: PropertyName) {
   switch (propertyName) {
     case PropertyName.DIALOG:
-      return "/src/assets/images/dialog.svg";
+      return "/dialog.svg";
     case PropertyName.ASTERISK:
-      return "/src/assets/images/asterisk.svg";
+      return "/asterisk.svg";
     case PropertyName.INTERLUDE:
-      return "/src/assets/images/pen.svg";
+      return "/pen.svg";
+    case PropertyName.BR:
+      return "/space.svg";
     default:
       return "";
   }
@@ -52,9 +54,6 @@ function getBtnIcon(propertyName: PropertyName) {
     <div class="fieldgroup">
       <label for="quote" class="title">Citation</label>
       <div class="input textarea-wrapper input--quote">
-        <button class="btn--icon">
-          <img src="/src/assets/images/copy.svg" alt="Copier" />
-        </button>
         <textarea name="quote" id="quote" v-model="quote"></textarea>
       </div>
     </div>
